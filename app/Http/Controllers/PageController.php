@@ -50,9 +50,14 @@ class PageController extends Controller
         return view('pages.seller.addproduct');
     }
 
-    public function productPage($id)
+    public function getProducts()
     {
-        $product = new ProductResource(Product::where('id', $id)->first());
+        return view('pages.seller.myproducts');
+    }
+
+    public function productPage($slug)
+    {
+        $product = new ProductResource(Product::where('slug', $slug)->first());
         $seller = new SellerResource(Seller::findOrFail($product->seller_id));
 
         return view('pages.product', compact('product', 'seller'));

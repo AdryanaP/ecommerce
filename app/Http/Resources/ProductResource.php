@@ -23,7 +23,6 @@ class ProductResource extends JsonResource
             'seller_id' => $this->seller_id,
             'images' => $this->images,
             'price' => number_format($this->price, 2, ',', '.'),
-            'unformatted_price' => $this->price,
             'description' => $this->description,
             'category' => $this->category,
 

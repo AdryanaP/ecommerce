@@ -18,6 +18,7 @@ import MyAccount from "./Components/MyAccount.vue";
 import ReviewModal from "./Components/ReviewModal.vue";
 
 import AddProducts from "./Components/Seller/AddProducts.vue";
+import MyProducts from "./Components/Seller/MyProducts.vue";
 
 import MyFavorites from "./Components/Client/MyFavorites.vue";
 
@@ -69,7 +70,8 @@ createApp({
             AddProducts,
             ProductCard,
             ProductPage,
-            MyFavorites
+            MyFavorites,
+            MyProducts
         },
     })
     .use(VueTheMask)

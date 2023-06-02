@@ -56,7 +56,7 @@ Route::middleware('splade')->group(function () {
     Route::post('login', [AuthenticatedSessionController::class, 'clientLogin']);
 
     // Página de produto
-    Route::get('produto/{id}', [PageController::class, 'productPage']);
+    Route::get('produto/{slug}', [PageController::class, 'productPage']);
 
     Route::get('login-tipo', [PageController::class, 'loginType']);
 
@@ -66,6 +66,7 @@ Route::middleware('splade')->group(function () {
     Route::group(['middleware' => ['auth:seller']], function () {
         // Página de adição de produto
         Route::get('/adicionar-produto', [PageController::class, 'addProduct']);
+        Route::get('/meus-produtos', [PageController::class, 'getProducts']);
     });
 
     //Cliente

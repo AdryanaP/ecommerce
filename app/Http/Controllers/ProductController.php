@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Filament\Resources\ProductResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource as ResourcesProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -39,7 +40,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'seller_id' => ['required', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', 'unique:' . Product::class],
+            'description' => ['required', 'string'],
+            'price' => ['required'],
+            'category' => ['required', 'string'],
+            'images' => ['required', 'json',],
+        ]);
+
+        $product = new Product();
+        $product->seller_id = $request->input('seller_id');
+        $product->name = $request->input('name');
+        $product->slug = $request->input('slug');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category = $request->input('category');
+        $product->images = $request->input('images');
+
+        if ($product->save()) {
+            return response($product, 201);
+        }
     }
 
     /**
@@ -50,7 +72,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = new ProductCollection(Product::where("seller_id", $id)->get());
+        return response($products, 201);
     }
 
     /**
@@ -73,7 +96,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'seller_id' => ['required', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', 'unique:' . Product::class],
+            'description' => ['required', 'string'],
+            'price' => ['required'],
+            'category' => ['required', 'string'],
+            'images' => ['required', 'json',],
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('name');
+        $product->slug = $request->input('slug');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category = $request->input('category');
+        $product->images = $request->input('images');
+
+        if ($product->save()) {
+            return response($product, 201);
+        }
     }
 
     /**
@@ -84,6 +127,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        if ($product->delete()) {
+            return new ProductResource($product);
+        }
     }
 }

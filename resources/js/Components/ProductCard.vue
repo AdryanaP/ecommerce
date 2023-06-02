@@ -1,6 +1,6 @@
 <template>
     <a
-        :href="`produto/${product.id}`"
+        :href="`produto/${product.slug}`"
         class="flex flex-col justify-between gap-3 border border-pink-500 rounded"
     >
         <img
