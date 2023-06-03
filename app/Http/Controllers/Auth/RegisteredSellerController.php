@@ -45,6 +45,7 @@ class RegisteredSellerController extends Controller
 
         $seller->save();
 
+        Auth::guard('client')->logout();
         Auth::guard('seller')->login($seller);
 
         Toast::title('Bem-vindo!')

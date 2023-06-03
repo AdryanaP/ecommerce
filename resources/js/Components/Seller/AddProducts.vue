@@ -94,7 +94,7 @@
 
             <div class="col-span-full">
                 <label
-                    for="cover-photo"
+                    for="file-upload"
                     class="block text-sm font-medium leading-6 text-gray-900"
                     >Imagens do produto</label
                 >
@@ -115,10 +115,10 @@
                             ></path>
                         </svg>
 
-                        <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                        <div class="mt-4 flex text-sm leading-6 text-gray-500">
                             <label
                                 for="file-upload"
-                                class="relative cursor-pointer rounded-md bg-white font-semibold text-pink-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-pink-600 focus-within:ring-offset-2 hover:text-pink-500"
+                                class="relative cursor-pointer rounded-md bg-white font-semibold text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2 hover:text-pink-500"
                             >
                                 <span>Upload os arquivos</span>
                                 <input
@@ -135,18 +135,18 @@
                             </label>
                             <p class="pl-1">ou arraste até aqui</p>
                         </div>
-                        <p class="text-xs leading-5 text-gray-600">
+                        <p class="text-xs leading-5 text-gray-500">
                             PNG, JPG, GIF até 10MB
                         </p>
-                        <p class="text-xs leading-5 text-gray-600">
+                        <p class="text-xs leading-5 text-gray-500">
                             max: 3 imagens
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div v-if="product.images.length" class="flex gap-2 justify-around">
-                <div v-for="img in product.images" :key="img">
+            <!-- <div v-if="product.images.length" class="flex gap-2 justify-around">
+                <div v-for="(img, index) in product.images" :key="index">
                     <div
                         class="border border-dashed border-pink-500 p-2 rounded"
                     >
@@ -157,16 +157,16 @@
                         />
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="my-4">
                 <div v-if="alert.show" class="p-2 mb-4 bg-red-200 rounded">
-                    <p class="text-red-600 text-sm">❗️ {{ alert.message }}</p>
+                    <p class="text-red-500 text-sm">❗️ {{ alert.message }}</p>
                 </div>
                 <button
                     type="button"
                     @click="validateForm"
-                    class="text-center w-full rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                    class="text-center w-full rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                 >
                     Adicionar
                 </button>
@@ -200,7 +200,6 @@ export default {
                 category: "",
                 images: [],
             },
-            qtd: 0,
             alert: {
                 show: false,
                 message: "",
@@ -222,7 +221,6 @@ export default {
                 this.alert.message = "Máximo de 3 imagens";
             } else {
                 for (let img of this.$refs.file.files) {
-                    this.qtd++;
                     this.formatImage(img);
                 }
             }
@@ -236,10 +234,13 @@ export default {
             this.product.images = JSON.parse(
                 JSON.stringify(this.product.images)
             );
+            console.log(this.product.images)
         },
         validateForm() {
             this.alert.show = false;
             this.alert.message = "";
+
+            console.log("bb")
 
             if (this.product.name.length < 1) {
                 this.alert.message = "Campo nome é obrigatório";
@@ -259,14 +260,14 @@ export default {
             }
 
             if (!this.alert.show) {
+                console.log("cc")
                 this.addProducts();
             }
         },
         addProducts() {
-            this.product.slug = this.product.slug
-                .replace(" ", "-")
-                .toLowerCase();
+            this.product.slug = this.product.slug.replace(" ", "-").toLowerCase();
             this.product.images = JSON.stringify(this.product.images);
+            console.log("aa")
 
             axios
                 .post("http://127.0.0.1:8000/api/products", this.product)

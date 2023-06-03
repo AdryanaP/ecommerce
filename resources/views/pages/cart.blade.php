@@ -37,7 +37,7 @@
                                             </button>
                                         </x-splade-form>
 
-                                        <Link href="{{ route('cart.remove') }}" method="POST" :data="[{{ $item->id }}]" class="font-light text-sm text-pink-500 hover:text-pink-600 sm:ml-0 sm:mt-3 no-underline">
+                                        <Link href="{{ route('cart.remove') }}" method="POST" :data="[{{ $item->id }}]" class="font-light text-sm text-pink-500 hover:text-pink-500 sm:ml-0 sm:mt-3 no-underline">
                                             Remover
                                         </Link>
                                     </div>
@@ -55,7 +55,7 @@
                         <div class="flow-root">
                             <dl class="-my-4 divide-y divide-gray-200 text-sm">
                                 <div class="flex items-center justify-between py-4">
-                                    <dt class="text-gray-600">Subtotal</dt>
+                                    <dt class="text-gray-500">Subtotal</dt>
                                     <dd class="font-medium text-gray-900">R$ {{ number_format(str_replace(',', '', \Cart::session(Auth::id())->getSubTotal()) / 100, 2, ',', '.') }}</dd>
                                 </div>
                             </dl>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="mt-10">
                         <Link href="{{ route('checkout') }}"
-                                class="w-full uppercase no-underline flex justify-center items-center rounded-sm border border-transparent bg-pink-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                                class="w-full uppercase no-underline flex justify-center items-center rounded-sm border border-transparent bg-pink-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                         >
                             Ir para pagamento
                         </Link>
@@ -72,7 +72,7 @@
                     <div class="mt-6 text-center text-sm text-gray-500">
                         <p>
                             ou
-                            <Link href="{{ route('welcome') }}" class="text-pink-500 hover:text-pink-600">
+                            <Link href="{{ route('welcome') }}" class="text-pink-500 hover:text-pink-500">
                                 Continue Comprando
                                 <span aria-hidden="true"> &rarr;</span>
                             </Link>

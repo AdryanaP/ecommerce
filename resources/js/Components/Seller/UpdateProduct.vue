@@ -118,7 +118,7 @@
                         <div class="mt-4 flex text-sm leading-6 text-gray-600">
                             <label
                                 for="file-upload"
-                                class="relative cursor-pointer rounded-md bg-white font-semibold text-pink-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-pink-600 focus-within:ring-offset-2 hover:text-pink-500"
+                                class="relative cursor-pointer rounded-md bg-white font-semibold text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2 hover:text-pink-500"
                             >
                                 <span>Upload os arquivos</span>
                                 <input
@@ -166,7 +166,7 @@
                 <button
                     type="button"
                     @click="validateForm"
-                    class="text-center w-full rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                    class="text-center w-full rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                 >
                     Adicionar
                 </button>

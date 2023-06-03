@@ -53,6 +53,7 @@ class RegisteredUserController extends Controller
 
         $client->save();
 
+        Auth::guard('seller')->logout();
         Auth::guard('client')->login($client);
 
         Toast::title('Bem-vindo!')

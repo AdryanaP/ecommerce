@@ -27,18 +27,13 @@ class AuthenticatedSessionController extends Controller
 
     public function clientLogin(LoginRequest $request)
     {
-        info("aa");
-        $client = $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required'],
-        ]);
+        $request->authenticate();
 
-        if (\Auth::guard('client')->attempt($request->only(['email', 'password']), $request->get('remember'))) {
-            Auth::guard('seller')->logout();
-            return redirect()->intended(RouteServiceProvider::HOME);
-        }
+        Auth::guard('seller')->logout();
 
-        return back()->withInput($request->only('email', 'remember'));
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function sellerLogin(Request $request)

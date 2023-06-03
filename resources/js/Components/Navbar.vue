@@ -70,13 +70,13 @@
                         >
                         <a
                             v-if="userSeller"
-                            href="#"
+                            href="/minhas-vendas"
                             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                             >Produtos Vendidos</a
                         >
                         <a
                             v-if="userClient"
-                            href="#"
+                            href="/minhas-compras"
                             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                             >Minhas Compras</a
                         >
@@ -100,7 +100,7 @@
                 >
                     <a
                         href="/logoutSeller"
-                        class="text-center rounded-md border border-pink-600 px-3 py-2 text-sm font-semibold text-pink-600 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                        class="text-center rounded-md border border-pink-500 px-3 py-2 text-sm font-semibold text-pink-500 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                     >
                         Sair
                     </a>
@@ -111,7 +111,7 @@
                 >
                     <a
                         href="/logoutClient"
-                        class="text-center rounded-md border border-pink-600 px-3 py-2 text-sm font-semibold text-pink-600 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                        class="text-center rounded-md border border-pink-500 px-3 py-2 text-sm font-semibold text-pink-500 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                     >
                         Sair
                     </a>
@@ -120,13 +120,13 @@
                     <div class="gap-2 hidden md:grid md:grid-cols-2">
                         <a
                             href="/cadastro"
-                            class="text-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                            class="text-center rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                         >
                             Quero Comprar
                         </a>
                         <a
                             href="/cadastro-vendedor"
-                            class="text-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                            class="text-center rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                         >
                             Quero Vender
                         </a>
@@ -136,7 +136,7 @@
                     >
                         <a
                             href="/login-tipo"
-                            class="text-center rounded-md border border-pink-600 px-3 py-2 text-sm font-semibold text-pink-600 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                            class="text-center rounded-md border border-pink-500 px-3 py-2 text-sm font-semibold text-pink-500 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                         >
                             Entrar
                         </a>
@@ -172,14 +172,14 @@
                 <DisclosureButton
                     v-if="userSeller"
                     as="a"
-                    href="/"
+                    href="//minhas-vendas"
                     class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
                     >Produtos Vendidos</DisclosureButton
                 >
                 <DisclosureButton
                     v-if="userClient"
                     as="a"
-                    href="/"
+                    href="/minhas-compras"
                     class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
                     >Minhas Compras</DisclosureButton
                 >
@@ -205,13 +205,13 @@
                 <div class="flex flex-col gap-2">
                     <a
                         href="/cadastro"
-                        class="text-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                        class="text-center rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                     >
                         Quero Comprar
                     </a>
                     <a
                         href="/cadastro-vendedor"
-                        class="text-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                        class="text-center rounded-md bg-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
                     >
                         Quero Vender
                     </a>

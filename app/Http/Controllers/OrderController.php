@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderCollection;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -39,12 +39,14 @@ class OrderController extends Controller
         $request->validate([
             'client_id' => ['required'],
             'product_id' => ['required'],
+            'seller_id' => ['required'],
         ]);
 
         $order = new Order();
         $order->client_id = $request->input('client_id');
         $order->product_id = $request->input('product_id');
-   
+        $order->seller_id = $request->input('seller_id');
+
 
         if ($order->save()) {
             return response($order, 201);
@@ -59,8 +61,28 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $orders =
+            Order::where('client_id', $id)
+            ->with('product')
+            ->with('client')
+            ->with('seller')
+            ->get();
+
+        return response($orders, 201);
     }
+
+    public function showSeller($id)
+    {
+        $orders =
+            Order::where('seller_id', $id)
+            ->with('product')
+            ->with('client')
+            ->with('seller')
+            ->get();
+
+        return response($orders, 201);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

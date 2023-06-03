@@ -54,7 +54,7 @@ export default {
             axios
                 .delete(`http://127.0.0.1:8000/api/product/${this.product.id}`)
                 .then((res) => {
-                    console.log(res);
+                    window.location.reload();
                 });
         },
     },

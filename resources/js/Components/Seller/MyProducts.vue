@@ -1,5 +1,8 @@
 <template>
-    <div v-if="products.length">
+    <div
+        v-if="products.length"
+        class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
+    >
         <div v-for="product in products" :key="product.id">
             <UpdateProductCard :product="product" />
         </div>

@@ -154,6 +154,7 @@ export default {
                 .post("http://127.0.0.1:8000/api/order", {
                     client_id: this.client.id,
                     product_id: this.product.id,
+                    seller_id: this.product.seller_id,
                 })
                 .then(() => {
                     this.changeSellerCredits()

@@ -44,3 +44,5 @@ Route::put('/seller-credits/{id}', [SellerController::class, 'edit']);
 
 // Pedido
 Route::post('/order', [OrderController::class, 'store']);
+Route::get('/client-orders/{id}', [OrderController::class, 'show']);
+Route::get('/seller-orders/{id}', [OrderController::class, 'showSeller']);

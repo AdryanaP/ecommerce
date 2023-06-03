@@ -2,7 +2,7 @@
     <x-slot:trigger>
         <input
             type="checkbox"
-            class="rounded border-gray-300 text-pink-600 shadow-sm focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 disabled:opacity-50"
+            class="rounded border-gray-300 text-pink-500 shadow-sm focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 disabled:opacity-50"
             :checked="table.allVisibleItemsAreSelected"
         />
     </x-slot:trigger>

@@ -11,9 +11,6 @@ import PasswordInput from "./Components/Forms/PasswordInput.vue";
 import PasswordConfirmationInput from "./Components/Forms/PasswordConfirmationInput.vue";
 
 import Search from "./Components/Search.vue";
-import MyOrders from "./Components/MyOrders.vue";
-import MyOrder from "./Components/MyOrder.vue";
-import MyAccount from "./Components/MyAccount.vue";
 
 import ReviewModal from "./Components/ReviewModal.vue";
 
@@ -21,9 +18,12 @@ import AddProducts from "./Components/Seller/AddProducts.vue";
 import MyProducts from "./Components/Seller/MyProducts.vue";
 import UpdateProductCard from "./Components/Seller/UpdateProductCard.vue";
 import UpdateProduct from "./Components/Seller/UpdateProduct.vue";
+import MySales from "./Components/Seller/MySales.vue";
 
 import MyFavorites from "./Components/Client/MyFavorites.vue";
 import UpdateAccount from "./Components/Client/UpdateAccount.vue";
+import MyOrders from "./Components/Client/MyOrders.vue";
+
 
 import Navbar from "./Components/Navbar.vue";
 
@@ -64,14 +64,12 @@ createApp({
             WishlistToggle,
             Search,
             MyOrders,
-            MyOrder,
             ReviewModal,
             ProductReviews,
             Alert,
             Wishlist,
             Payment,
             Navbar,
-            MyAccount,
             AddProducts,
             ProductCard,
             ProductPage,
@@ -80,7 +78,8 @@ createApp({
             UpdateProductCard,
             UpdateProduct,
             UpdateAccount,
-            Modal
+            Modal,
+            MySales
         },
     })
     .use(VueTheMask)

@@ -5,6 +5,8 @@
         <p>Olá <b>{{ Auth::user()->name }}</b> (não é <b>{{ Auth::user()->name }}</b>?
             <Link href="{{ route('logout-client') }}" method="GET" class="font-normal">Sair</Link>)
         </p>
+        <p>Você tem <span class="text-pink-500 font-bold">{{Auth::user()->credits}} créditos</span>
+        </p>
     </div>
 
     <h2 class="text-center font-medium text-2xl uppercase mt-6">Editar Meus Dados</h2>
