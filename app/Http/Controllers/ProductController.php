@@ -43,7 +43,7 @@ class ProductController extends Controller
         $request->validate([
             'seller_id' => ['required', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:' . Product::class],
+            'slug' => ['required', 'string', 'max:255', 'unique:products,slug'],
             'description' => ['required', 'string'],
             'price' => ['required'],
             'category' => ['required', 'string'],
@@ -99,7 +99,7 @@ class ProductController extends Controller
         $request->validate([
             'seller_id' => ['required', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:' . Product::class],
+            'slug' => ['required', 'string', 'max:255', 'unique:products,slug,' . $request->id],
             'description' => ['required', 'string'],
             'price' => ['required'],
             'category' => ['required', 'string'],
@@ -130,7 +130,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if ($product->delete()) {
-            return new ProductResource($product);
+            return response($product, 201);
         }
     }
 }

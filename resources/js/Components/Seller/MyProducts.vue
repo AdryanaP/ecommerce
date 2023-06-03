@@ -1,16 +1,16 @@
 <template>
     <div v-for="product in products" :key="product.id">
-        <ProductCard :product="product" />
+        <UpdateProductCard :product="product" />
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import ProductCard from "../ProductCard.vue";
+import UpdateProductCard from "./UpdateProductCard.vue";
 
 export default {
     name: "MyProduts",
-    components: { ProductCard },
+    components: { UpdateProductCard },
     props: {
         sellerId: {
             type: Number,
@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            product: {},
+            products: {},
         };
     },
 
@@ -28,6 +28,7 @@ export default {
             .get(`http://127.0.0.1:8000/api/products/${this.sellerId}`)
             .then((res) => {
                 console.log(res);
+                this.products = res.data.data
             })
             .catch((error) => {});
     },

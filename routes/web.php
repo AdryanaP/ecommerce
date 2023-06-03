@@ -67,6 +67,7 @@ Route::middleware('splade')->group(function () {
         // Página de adição de produto
         Route::get('/adicionar-produto', [PageController::class, 'addProduct']);
         Route::get('/meus-produtos', [PageController::class, 'getProducts']);
+        Route::get('/editar-produto/{slug}', [PageController::class, 'updateProduct']);
     });
 
     //Cliente

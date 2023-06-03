@@ -1,7 +1,7 @@
 <template>
     <div class="md:w-[40%] m-auto p-4">
         <h1 class="mb-4 font-bold text-2xl text-pink-500 text-center">
-            Adicionar Produto
+            Editar Produto
         </h1>
         <hr />
         <div class="flex flex-col gap-2 p-4">
@@ -107,7 +107,7 @@
                             viewBox="0 0 48 48"
                             id="image-files"
                             class="mx-auto h-10 w-10 text-pink-500"
-                            fill="#db2777"
+                            bg-pink-100
                         >
                             <path
                                 d="M19 18.5a3.5 3.5 0 1 0-3.5 3.5 3.5 3.5 0 0 0 3.5-3.5Zm-5 0a1.5 1.5 0 1 1 1.5 1.5 1.5 1.5 0 0 1-1.5-1.5Zm26.12-2.79L29.29 4.88A3 3 0 0 0 27.17 4H10a3 3 0 0 0-3 3v5a1 1 0 0 0 2 0V7a1 1 0 0 1 1-1h17v9a3 3 0 0 0 3 3h9v15.37l-4.84-5.45a3 3 0 0 0-4.37-.13l-3.69 3.69-4.94-5.56a3 3 0 0 0-4.37-.13L9 33.59V16a1 1 0 0 0-2 0v25a3 3 0 0 0 3 3h28a3 3 0 0 0 3-3V17.83a3 3 0 0 0-.88-2.12ZM30 16a1 1 0 0 1-1-1V7.41L37.59 16ZM9 41v-4.59l9.21-9.2a.88.88 0 0 1 .73-.29.94.94 0 0 1 .72.33L32.77 42H10a1 1 0 0 1-1-1Zm29 1h-2.55l-8-9 3.78-3.77a.85.85 0 0 1 .73-.29.94.94 0 0 1 .72.33L39 36.38V41a1 1 0 0 1-1 1Z"
@@ -184,22 +184,13 @@ export default {
     components: { Alert },
     name: "AddProduts",
     props: {
-        sellerId: {
-            type: Number,
+        product: {
+            type: Object,
             required: true,
         },
     },
     data() {
         return {
-            product: {
-                seller_id: this.sellerId,
-                name: "",
-                slug: "",
-                description: "",
-                price: 0,
-                category: "",
-                images: [],
-            },
             qtd: 0,
             alert: {
                 show: false,
@@ -269,10 +260,13 @@ export default {
             this.product.images = JSON.stringify(this.product.images);
 
             axios
-                .post("http://127.0.0.1:8000/api/products", this.product)
+                .put(
+                    `http://127.0.0.1:8000/api/product/${this.product.id}`,
+                    this.product
+                )
                 .then((res) => {
                     console.log(res);
-                    this.alertTitle = "Seu produto foi postado com sucesso!!";
+                    this.alertTitle = "Seu produto foi editado com sucesso!!";
                     this.alertShow = true;
                     setTimeout(() => {
                         this.alertShow = false;
@@ -287,7 +281,9 @@ export default {
         },
     },
     created() {
-        console.log(this.sellerId);
+        console.log(this.product);
+        this.product.images = JSON.parse(this.product.images);
+        this.product.price = parseFloat(this.product.price).toFixed(2);
     },
 };
 </script>

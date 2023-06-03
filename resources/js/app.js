@@ -19,6 +19,8 @@ import ReviewModal from "./Components/ReviewModal.vue";
 
 import AddProducts from "./Components/Seller/AddProducts.vue";
 import MyProducts from "./Components/Seller/MyProducts.vue";
+import UpdateProductCard from "./Components/Seller/UpdateProductCard.vue";
+import UpdateProduct from "./Components/Seller/UpdateProduct.vue";
 
 import MyFavorites from "./Components/Client/MyFavorites.vue";
 
@@ -71,7 +73,9 @@ createApp({
             ProductCard,
             ProductPage,
             MyFavorites,
-            MyProducts
+            MyProducts,
+            UpdateProductCard,
+            UpdateProduct
         },
     })
     .use(VueTheMask)

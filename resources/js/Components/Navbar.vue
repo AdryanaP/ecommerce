@@ -94,7 +94,10 @@
                         >
                     </div>
                 </div>
-                <div class="flex items-center">
+                <div
+                    class="flex items-center"
+                    v-if="!userClient && !userSeller"
+                >
                     <div class="gap-2 hidden md:grid md:grid-cols-2">
                         <a
                             href="/cadastro"
@@ -134,13 +137,52 @@
                 >
 
                 <DisclosureButton
+                    v-if="userSeller"
                     as="a"
                     href="/adicionar-produto"
                     class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
                     >Adicionar Produto</DisclosureButton
                 >
+                <DisclosureButton
+                    v-if="userSeller"
+                    as="a"
+                    href="/meus-produtos/"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
+                    >Meus Produto</DisclosureButton
+                >
+                <DisclosureButton
+                    v-if="userSeller"
+                    as="a"
+                    href="/"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
+                    >Produtos Vendidos</DisclosureButton
+                >
+                <DisclosureButton
+                    v-if="userClient"
+                    as="a"
+                    href="/"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
+                    >Minhas Compras</DisclosureButton
+                >
+                <DisclosureButton
+                    v-if="userClient"
+                    as="a"
+                    href="/favoritos"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
+                    >Meus Favoritos</DisclosureButton
+                >
+                <DisclosureButton
+                    v-if="userClient"
+                    as="a"
+                    href="/"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
+                    >Minha conta</DisclosureButton
+                >
             </div>
-            <div class="border-t border-gray-200 pb-3 pt-4 px-2">
+            <div
+                class="border-t border-gray-200 pb-3 pt-4 px-2"
+                v-if="!userClient && !userSeller"
+            >
                 <div class="flex flex-col gap-2">
                     <a
                         href="/cadastro"
@@ -193,7 +235,6 @@ export default {
         MenuItems,
     },
 
-    created() {
-    },
+    created() {},
 };
 </script>
