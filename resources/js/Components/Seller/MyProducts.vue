@@ -1,6 +1,13 @@
 <template>
-    <div v-for="product in products" :key="product.id">
-        <UpdateProductCard :product="product" />
+    <div v-if="products.length">
+        <div v-for="product in products" :key="product.id">
+            <UpdateProductCard :product="product" />
+        </div>
+    </div>
+    <div v-else>
+        <p class="italic text-center mt-6 text-gray-600">
+            Nenhum produto favorito
+        </p>
     </div>
 </template>
 
@@ -28,7 +35,7 @@ export default {
             .get(`http://127.0.0.1:8000/api/products/${this.sellerId}`)
             .then((res) => {
                 console.log(res);
-                this.products = res.data.data
+                this.products = res.data.data;
             })
             .catch((error) => {});
     },

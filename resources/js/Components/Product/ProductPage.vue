@@ -45,15 +45,13 @@
             >
                 <ProductActionButtons
                     :product="this.product"
-                    :product-slug="this.product.slug"
-                    :product-name="this.product.name"
-                    :clientId="this.clientId"
+                    :client="this.client"
                 />
 
                 <WishlistToggle
-                    v-if="this.clientId"
+                    v-if="this.client"
                     :product="this.product"
-                    :clientId="this.clientId"
+                    :clientId="this.client.id"
                 />
             </div>
 
@@ -102,8 +100,8 @@ export default {
             required: true,
         },
 
-        clientId: {
-            type: Number,
+        client: {
+            type: Object,
             required: false,
         },
     },
@@ -123,8 +121,6 @@ export default {
 
     created() {
         this.product.images = JSON.parse(this.product.images);
-        console.log(this.product);
-        console.log(this.seller);
     },
 };
 </script>

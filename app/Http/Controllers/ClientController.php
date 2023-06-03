@@ -62,11 +62,15 @@ class ClientController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $request->validate([
+            'credits' => ['required']
+        ]);
 
         $client = Client::findOrFail($id);
+        $client->credits = $request->credits;
 
         if ($client->save()) {
-            return $client;
+            return new ClientResource($client);
         }
     }
 

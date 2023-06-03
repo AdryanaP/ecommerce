@@ -18,7 +18,7 @@
                 <span class="text-pink-500">{{ $product->name }}</span>
             </h2>
 
-            <ProductPage :product="@js($product)" :seller="@js($seller)" :clientId="@js(Auth::id())" />
+            <ProductPage :product="@js($product)" :seller="@js($seller)" :client="@js(Auth::user())" />
         </x-splade-lazy>
     </div>
 </x-guest-layout>

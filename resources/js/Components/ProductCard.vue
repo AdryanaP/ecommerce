@@ -29,6 +29,7 @@ export default {
             required: false,
         },
     },
+
     created() {
         this.product.images = JSON.parse(this.product.images);
     },

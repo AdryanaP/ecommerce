@@ -6,9 +6,11 @@ use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FreteController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController ;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +37,10 @@ Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
 // Cliente
 Route::put('/client/{id}', [ClientController::class, 'update']);
+Route::put('/client-credits/{id}', [ClientController::class, 'edit']);
+
+// Vendedor 
+Route::put('/seller-credits/{id}', [SellerController::class, 'edit']);
+
+// Pedido
+Route::post('/order', [OrderController::class, 'store']);

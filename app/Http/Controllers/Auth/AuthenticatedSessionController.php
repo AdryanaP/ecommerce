@@ -27,6 +27,7 @@ class AuthenticatedSessionController extends Controller
 
     public function clientLogin(LoginRequest $request)
     {
+        info("aa");
         $client = $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required'],
@@ -59,7 +60,7 @@ class AuthenticatedSessionController extends Controller
     public function adminLogin(Request $request)
     {
 
-        $seller = $request->validate([
+        $admin = $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required'],
         ]);

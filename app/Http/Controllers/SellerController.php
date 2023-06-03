@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SellerResource;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -55,9 +57,18 @@ class SellerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $request->validate([
+            'credits' => ['required']
+        ]);
+
+        $seller = Seller::findOrFail($id);
+        $seller->credits = $seller->credits + $request->credits;
+
+        if ($seller->save()) {
+            return new SellerResource($seller);
+        }
     }
 
     /**

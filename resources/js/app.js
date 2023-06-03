@@ -28,6 +28,8 @@ import UpdateAccount from "./Components/Client/UpdateAccount.vue";
 import Navbar from "./Components/Navbar.vue";
 
 import Alert from "./Components/Alert.vue";
+import Modal from "./Components/Modal.vue";
+
 import ProductCard from "./Components/ProductCard.vue";
 
 import Wishlist from "./Components/Wishlist.vue";
@@ -77,7 +79,8 @@ createApp({
             MyProducts,
             UpdateProductCard,
             UpdateProduct,
-            UpdateAccount
+            UpdateAccount,
+            Modal
         },
     })
     .use(VueTheMask)
