@@ -88,16 +88,35 @@
                         >
                         <a
                             v-if="userClient"
-                            href="#"
+                            href="/minha-conta"
                             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                             >Minha Conta</a
                         >
                     </div>
                 </div>
                 <div
-                    class="flex items-center"
-                    v-if="!userClient && !userSeller"
+                    v-if="userSeller"
+                    class="md:ml-4 md:flex md:flex-shrink-0 md:items-center"
                 >
+                    <a
+                        href="/logoutSeller"
+                        class="text-center rounded-md border border-pink-600 px-3 py-2 text-sm font-semibold text-pink-600 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                    >
+                        Sair
+                    </a>
+                </div>
+                <div
+                    v-else-if="userClient"
+                    class="md:ml-4 md:flex md:flex-shrink-0 md:items-center"
+                >
+                    <a
+                        href="/logoutClient"
+                        class="text-center rounded-md border border-pink-600 px-3 py-2 text-sm font-semibold text-pink-600 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                    >
+                        Sair
+                    </a>
+                </div>
+                <div class="flex items-center" v-else>
                     <div class="gap-2 hidden md:grid md:grid-cols-2">
                         <a
                             href="/cadastro"
@@ -174,7 +193,7 @@
                 <DisclosureButton
                     v-if="userClient"
                     as="a"
-                    href="/"
+                    href="/minha-conta"
                     class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
                     >Minha conta</DisclosureButton
                 >

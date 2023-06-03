@@ -69,10 +69,9 @@ class PageController extends Controller
         return view('pages.product', compact('product', 'seller'));
     }
 
-    public function myaccount()
+    public function myAccount()
     {
-        $client = Client::where('id', Auth::id())->first();
-        return view('pages.myaccount', compact('client'));
+        return view('pages.client.myaccount');
     }
 
     public function mypersonaldata()

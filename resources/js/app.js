@@ -23,6 +23,7 @@ import UpdateProductCard from "./Components/Seller/UpdateProductCard.vue";
 import UpdateProduct from "./Components/Seller/UpdateProduct.vue";
 
 import MyFavorites from "./Components/Client/MyFavorites.vue";
+import UpdateAccount from "./Components/Client/UpdateAccount.vue";
 
 import Navbar from "./Components/Navbar.vue";
 
@@ -75,7 +76,8 @@ createApp({
             MyFavorites,
             MyProducts,
             UpdateProductCard,
-            UpdateProduct
+            UpdateProduct,
+            UpdateAccount
         },
     })
     .use(VueTheMask)

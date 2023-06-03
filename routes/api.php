@@ -3,6 +3,7 @@
 use App\Http\Controllers\Actions\SearchController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Api\v1\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FreteController;
 use App\Http\Controllers\PageController;
@@ -31,3 +32,6 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+
+// Cliente
+Route::put('/client/{id}', [ClientController::class, 'update']);

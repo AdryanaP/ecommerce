@@ -33,32 +33,24 @@ Route::middleware('splade')->group(function () {
     // Página inicial
     Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 
-    // // Página do produto
-    // Route::get('/produto/{product}', ViewProductPage::class)->name('pages.product');
-
-    // // Página de carrinho
-    // Route::get('sacola', [CartController::class, 'cartList'])->name('cart.list');
-    // Route::post('sacola', [CartController::class, 'addToCart'])->name('cart.store');
-    // Route::put('sacola/{item}', [CartController::class, 'updateCart'])->name('cart.update');
-    // Route::delete('sacola/{item}', [CartController::class, 'removeCart'])->name('cart.remove');
-    // Route::post('sacola/limpar', [CartController::class, 'clearAllCart'])->name('cart.clear');
-
     // Cadastro Vendedor
     Route::get('/cadastro-vendedor', [RegisteredSellerController::class, 'create'])->name('register.seller');
     Route::post('/cadastro-vendedor', [RegisteredSellerController::class, 'store'])->name('register.seller.request');
 
     // Login Vendedor
-    Route::get('login-vendedor', [AuthenticatedSessionController::class, 'pageLogin']);
+    Route::get('login-vendedor', [AuthenticatedSessionController::class, 'pageSellerLogin']);
     Route::post('login-vendedor', [AuthenticatedSessionController::class, 'sellerLogin'])->name('login.seller');
 
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::get('login-tipo', [PageController::class, 'loginType']);
+    Route::get('login', [AuthenticatedSessionController::class, 'pageClientLogin'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'clientLogin']);
+
+
 
     // Página de produto
     Route::get('produto/{slug}', [PageController::class, 'productPage']);
 
-    Route::get('login-tipo', [PageController::class, 'loginType']);
 
     // Páginas autenticado
 
@@ -68,12 +60,15 @@ Route::middleware('splade')->group(function () {
         Route::get('/adicionar-produto', [PageController::class, 'addProduct']);
         Route::get('/meus-produtos', [PageController::class, 'getProducts']);
         Route::get('/editar-produto/{slug}', [PageController::class, 'updateProduct']);
+        Route::get('/logoutSeller', [AuthenticatedSessionController::class, 'logoutSeller']);
     });
 
     //Cliente
     Route::group(['middleware' => ['auth:client']], function () {
         // Página de favoritos
         Route::get('/favoritos', [PageController::class, 'wishlist']);
+        Route::get('/minha-conta', [PageController::class, 'myAccount']);
+        Route::get('/logoutClient', [AuthenticatedSessionController::class, 'logoutClient'])->name('logout-client');
     });
     Route::middleware('auth')->group(function () {
 

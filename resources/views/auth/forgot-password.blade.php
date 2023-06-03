@@ -28,7 +28,7 @@
 
         <x-splade-form action="{{ route('password.email') }}" class="space-y-4 mt-5">
             <!-- Email Address -->
-            <x-splade-input id="email" type="email" name="email" :label="__('Email')" required autofocus />
+            <x-splade-input id="email" type="email" name="email"  :label="__('Email')" required autofocus />
 
             <div class="flex items-center justify-end gap-4">
                 <x-splade-submit :label="__('Recuperar senha')" />

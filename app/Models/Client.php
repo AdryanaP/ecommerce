@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ClientResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -29,5 +30,10 @@ class Client extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ClientResetPasswordNotification($token));
+    }
 
 }

@@ -15,24 +15,29 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function pageClientLogin()
     {
-        return view('auth.login');
+        return view('auth.login-client');
     }
 
-    public function pageLogin()
+    public function pageSellerLogin()
     {
         return view('auth.login-seller');
     }
 
     public function clientLogin(LoginRequest $request)
     {
-        $request->authenticate();
+        $client = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required'],
+        ]);
 
-        $request->session()->regenerate();
-        Auth::guard('seller')->logout();
+        if (\Auth::guard('client')->attempt($request->only(['email', 'password']), $request->get('remember'))) {
+            Auth::guard('seller')->logout();
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return back()->withInput($request->only('email', 'remember'));
     }
 
     public function sellerLogin(Request $request)
@@ -43,14 +48,14 @@ class AuthenticatedSessionController extends Controller
             'password' => ['required'],
         ]);
 
-        if (\Auth::guard('seller')->attempt($request->only(['email','password']), $request->get('remember'))){
+        if (\Auth::guard('seller')->attempt($request->only(['email', 'password']), $request->get('remember'))) {
             Auth::guard('client')->logout();
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        return back()->withInput($request->only('email', 'remember'));    
+        return back()->withInput($request->only('email', 'remember'));
     }
-    
+
     public function adminLogin(Request $request)
     {
 
@@ -59,11 +64,11 @@ class AuthenticatedSessionController extends Controller
             'password' => ['required'],
         ]);
 
-        if (\Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+        if (\Auth::guard('admin')->attempt($request->only(['email', 'password']), $request->get('remember'))) {
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        return back()->withInput($request->only('email', 'remember'));    
+        return back()->withInput($request->only('email', 'remember'));
     }
 
     /**
@@ -71,15 +76,21 @@ class AuthenticatedSessionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
+     *
      */
-    public function destroy(Request $request)
+
+    public function logoutSeller()
+    {
+        Auth::guard('seller')->logout();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function logoutClient()
     {
         Auth::guard('client')->logout();
+        info("aa");
 
-//        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

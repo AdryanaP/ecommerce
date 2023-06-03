@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -80,6 +83,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients,email,' . $id],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'cpf' => ['required', 'string', 'max:14', 'unique:clients,cpf,' . $id],
             'birthdate' => ['required', 'string',],
             'state' => ['required', 'string',],
@@ -89,14 +93,14 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->name = $request->name;
         $client->email = $request->email;
+        $client->password = Hash::make($request->password);
         $client->cpf = $request->cpf;
         $client->birthdate = $request->birthdate;
         $client->state = $request->state;
         $client->city = $request->city;
-        $client->credits = 10000;
 
         if ($client->save()) {
-            return $client;
+            return new ClientResource($client);
         }
     }
 

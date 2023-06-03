@@ -181,8 +181,8 @@ import axios from "axios";
 import Alert from "../Alert.vue";
 
 export default {
-    components: { Alert },
     name: "AddProduts",
+    components: { Alert },
     props: {
         sellerId: {
             type: Number,
