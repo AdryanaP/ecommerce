@@ -17,39 +17,17 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationGroup = 'Gestão Bling';
-
-    protected static ?int $navigationSort = 1;
-
-    protected static ?string $navigationIcon = 'heroicon-o-template';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     protected static ?string $modelLabel = 'Produto';
 
     protected static ?string $pluralModelLabel = 'Produtos';
 
-    protected static ?string $slug = 'produtos';
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->where('parent_id', null);
-    }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('bling_id')
-                    ->label('ID no Bling')
-                    ->disabled(),
-                Forms\Components\TextInput::make('sku')
-                    ->label('SKU'),
-                Forms\Components\TextInput::make('name')
-                    ->label('Nome')
-                    ->required(),
-                Forms\Components\TextInput::make('name_br')
-                    ->label('Nome traduzido'),
-                Forms\Components\Toggle::make('highlights')
-                    ->label('Produto em destaque?'),
+                //
             ]);
     }
 
@@ -57,50 +35,24 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Produto')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\BadgeColumn::make('stock')
-                    ->label('Em estoque')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('price')
-                    ->label('Preço de venda')
-                    ->prefix('R$ ')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('bling_id')
-                    ->label('ID no Bling')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('sku')
-                    ->label('SKU')
-                    ->searchable()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')->label('Nome')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('price')->label('Preço')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('category')->label('Categoria')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('seller_id')->label('Vendedor')->searchable()->sortable(),
             ])
-            ->defaultSort('name')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->label('')->tooltip('Editar'),
             ])
             ->bulkActions([
-//                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\SubproductsRelationManager::class,
-        ];
-    }
-
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
-            'edit' => Pages\EditProduct::route('/{record}/editar'),
+            'index' => Pages\ManageProducts::route('/'),
         ];
-    }
+    }    
 }

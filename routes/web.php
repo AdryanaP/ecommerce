@@ -70,29 +70,7 @@ Route::middleware('splade')->group(function () {
         Route::get('/minhas-compras', [PageController::class, 'myOrders']);
         Route::get('/logoutClient', [AuthenticatedSessionController::class, 'logoutClient'])->name('logout-client');
     });
-    Route::middleware('auth')->group(function () {
 
-        // // Página de minha conta
-        // Route::get('/minha-conta', [PageController::class, 'myaccount'])->name('pages.myaccount');
-
-        // // Página de editar meus dados
-        // Route::get('/meus-dados', [PageController::class, 'mypersonaldata'])->name('pages.mypersonaldata');
-        // Route::post('/meus-dados', [PageController::class, 'mypersonaldataUpdate'])->name('pages.mypersonaldata.update');
-
-        // // Página de meus pedidos
-        // Route::get('/meus-pedidos', [PageController::class, 'myorders'])->name('pages.myorders');
-        // Route::get('/pedido/{order}', OrderController::class)->name('pages.myorder');
-
-        // // Página de lista de desejos
-        // Route::get('/meus-favoritos', [PageController::class, 'mywishlist'])->name('pages.mywishlist');
-        // Route::post('/meus-favoritos/remover', [PageController::class, 'mywishlistRemove'])->name('pages.mywishlist.remove');
-
-        // // Página de checkout
-        // Route::get('/pagamento', [CheckoutController::class, 'index'])->name('pages.checkout.index');
-        // Route::post('/pagamento', DoPayController::class)->name('checkout.pay');
-        // Route::get('/pagamento/{orderId}', [PageController::class, 'thankyou'])->name('pages.checkout.success');
-        // Route::get('/sucesso/{orderId}', [PageController::class, 'success'])->name('pages.success');
-    });
 
     require __DIR__ . '/auth.php';
 });
