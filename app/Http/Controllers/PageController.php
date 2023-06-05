@@ -40,6 +40,16 @@ class PageController extends Controller
         return view('welcome', compact('products'));
     }
 
+    public function confirmeEmail($id)
+    {
+        $client = Client::findOrfail($id)->first();
+        $client->credits = 1000;
+
+        if($client->save()) {
+            return view('pages.client.confirmeEmail');
+        }
+    }
+
     public function loginType()
     {
         return view('pages.logintype');

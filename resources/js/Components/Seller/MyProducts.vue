@@ -35,7 +35,7 @@ export default {
 
     created() {
         axios
-            .get(`http://127.0.0.1:8000/api/my-products/${this.sellerId}`)
+            .get(`/api/my-products/${this.sellerId}`)
             .then((res) => {
                 console.log(res);
                 this.products = res.data.data;

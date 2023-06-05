@@ -1,9 +1,6 @@
 <x-mail::layout>
 {{-- Header --}}
 <x-slot:header>
-<x-mail::header :url="config('app.url')">
-    <img src="https://novo.justbeauty.com.br/media/images/logos/black.png" alt="" style="max-width:25%;">
-</x-mail::header>
 </x-slot:header>
 
 {{-- Body --}}

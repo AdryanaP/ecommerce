@@ -113,7 +113,7 @@ import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import axios from "axios";
 
 export default {
-    name: "JustbeautyReviewModal",
+    name: "ReviewModal",
     components: { RadioGroup, RadioGroupLabel, RadioGroupOption },
     props: {
         product: {
@@ -180,7 +180,7 @@ export default {
 
                 if (this.editReview) {
                     axios
-                        .put(`https://4bbeauty.com.br/api/avaliacoes/${reviewId}`, data)
+                        .put(`/api/avaliacoes/${reviewId}`, data)
                         .then(() => {
                             this.alert.message =
                                 "Cometário editado com sucesso";
@@ -197,7 +197,7 @@ export default {
                         });
                 } else {
                     axios
-                        .post("https://4bbeauty.com.br/api/avaliacoes", data)
+                        .post("/api/avaliacoes", data)
                         .then(() => {
                             this.alert.message =
                                 "Cometário enviado com sucesso";
@@ -220,7 +220,7 @@ export default {
     created() {
         axios
             .get(
-                `https://4bbeauty.com.br/api/avaliacao/${this.product.parent_id != null ? this.product.parent_id : this.product.id}/${this.userId}`,
+                `/api/avaliacao/${this.product.parent_id != null ? this.product.parent_id : this.product.id}/${this.userId}`,
                 {
                     headers: {
                         Accept: "application/json",

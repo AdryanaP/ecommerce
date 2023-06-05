@@ -31,20 +31,4 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'me' => [
-        'api' => env('WEBSITE_API_ENDPOINT'),
-    ],
-
-    'bling' => [
-        'key' => env('BLING_ACCESS_KEY_ID'),
-    ],
-
-    'ipag' => [
-        'username' => env('IPAG_USERNAME'),
-        'password' => env('IPAG_PASSWORD'),
-        'endpoint' => env('IPAG_ENDPOINT'),
-        'callback_pix' => 'https://novo.justbeauty.com.br/api/callback/pix',
-        'callback_boleto' => 'https://novo.justbeauty.com.br/api/callback/boleto',
-    ],
-
 ];

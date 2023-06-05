@@ -57,7 +57,7 @@
 import axios from "axios";
 
 export default {
-    name: "JustbeautyProductReviews",
+    name: "ProductReviews",
     props: {
         productId: {
             type: Number,
@@ -91,7 +91,7 @@ export default {
 
     created() {
         axios
-            .get(`https://4bbeauty.com.br/api/avaliacoes/${this.productId}`)
+            .get(`api/avaliacoes/${this.productId}`)
             .then((res) => {
                 this.reviews = res.data;
             });

@@ -47,7 +47,7 @@ export default {
     methods: {
         checkLike() {
             axios
-                .post('http://127.0.0.1:8000/api/wishlist/check', {productId: this.product.id, clientId: this.clientId})
+                .post('/api/wishlist/check', {productId: this.product.id, clientId: this.clientId})
                 .then(
                     (res) => {
                         if (res.data.liked === true) {
@@ -66,7 +66,7 @@ export default {
 
         toggleLike() {
             axios
-                .post('http://127.0.0.1:8000/api/wishlist/toggle', {productId: this.product.id, clientId: this.clientId})
+                .post('/api/wishlist/toggle', {productId: this.product.id, clientId: this.clientId})
                 .then(
                     (res) => {
                         if (res.data.liked === true) {

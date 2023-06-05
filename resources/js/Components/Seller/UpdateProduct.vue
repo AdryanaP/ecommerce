@@ -247,7 +247,7 @@ export default {
 
             axios
                 .put(
-                    `http://127.0.0.1:8000/api/product/${this.product.id}`,
+                    `/api/product/${this.product.id}`,
                     this.product
                 )
                 .then((res) => {
@@ -257,7 +257,7 @@ export default {
                     setTimeout(() => {
                         this.alertShow = false;
                         window.location.href =
-                            "http://127.0.0.1:8000/meus-produtos";
+                            "/meus-produtos";
                     }, 3000);
                 })
                 .catch((error) => {

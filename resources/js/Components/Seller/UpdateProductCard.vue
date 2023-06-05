@@ -30,7 +30,7 @@
         <p class="text-2xl font-medium ml-2">R$ {{ product.price }}</p>
 
         <a
-            :href="`http://127.0.0.1:8000/editar-produto/${product.slug}`"
+            :href="`/editar-produto/${product.slug}`"
             type="button"
             class="text-sm text-center font-medium uppercase py-2 bg-pink-500 text-white"
         >
@@ -52,7 +52,7 @@ export default {
     methods: {
         deleteProduct() {
             axios
-                .delete(`http://127.0.0.1:8000/api/product/${this.product.id}`)
+                .delete(`/api/product/${this.product.id}`)
                 .then((res) => {
                     window.location.reload();
                 });

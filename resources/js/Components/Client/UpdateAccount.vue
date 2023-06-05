@@ -211,7 +211,7 @@ export default {
         },
         updateClient() {
             axios
-                .put(`http://127.0.0.1:8000/api/client/${this.client.id}`, this.client)
+                .put(`/api/client/${this.client.id}`, this.client)
                 .then((res) => {
                     console.log(res);
                     this.alertTitle =

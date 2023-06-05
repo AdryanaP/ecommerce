@@ -270,7 +270,7 @@ export default {
             console.log("aa")
 
             axios
-                .post("http://127.0.0.1:8000/api/products", this.product)
+                .post("/api/products", this.product)
                 .then((res) => {
                     console.log(res);
                     this.alertTitle = "Seu produto foi postado com sucesso!!";
@@ -278,7 +278,7 @@ export default {
                     setTimeout(() => {
                         this.alertShow = false;
                         window.location.href =
-                            "http://127.0.0.1:8000/meus-produtos";
+                            "/meus-produtos";
                     }, 3000);
                 })
                 .catch((error) => {

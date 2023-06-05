@@ -130,7 +130,7 @@ export default {
         changeClientCredits() {
             axios
                 .put(
-                    `http://127.0.0.1:8000/api/client-credits/${this.client.id}`,
+                    `/api/client-credits/${this.client.id}`,
                     { credits: this.credits }
                 )
                 .catch((error) => {
@@ -141,7 +141,7 @@ export default {
         changeSellerCredits() {
             axios
                 .put(
-                    `http://127.0.0.1:8000/api/seller-credits/${this.product.seller_id}`,
+                    `/api/seller-credits/${this.product.seller_id}`,
                     { credits: this.price }
                 )
                 .catch((error) => {
@@ -151,7 +151,7 @@ export default {
         },
         createOrder() {
             axios
-                .post("http://127.0.0.1:8000/api/order", {
+                .post("/api/order", {
                     client_id: this.client.id,
                     product_id: this.product.id,
                     seller_id: this.product.seller_id,

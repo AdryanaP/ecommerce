@@ -46,6 +46,8 @@ Route::middleware('splade')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'pageClientLogin'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'clientLogin']);
 
+    Route::get('confirmar-email/{id}', [PageController::class, 'confirmeEmail']);
+
     // Página de produto
     Route::get('produto/{slug}', [PageController::class, 'productPage']);
 

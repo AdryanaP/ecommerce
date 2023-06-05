@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Just Beauty'),
+    'name' => env('APP_NAME', '5Labs-ecommerce'),
 
     /*
     |--------------------------------------------------------------------------

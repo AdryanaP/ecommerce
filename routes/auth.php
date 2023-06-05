@@ -27,7 +27,6 @@ Route::middleware('guest')->group(function () {
     Route::post('resetar-senha', [NewPasswordController::class, 'store'])->name('password.store');
 });
 
-Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');

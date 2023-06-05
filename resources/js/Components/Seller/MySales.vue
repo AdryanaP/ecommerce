@@ -83,7 +83,7 @@ export default {
     created() {
         console.log(this.userId);
         axios
-            .get(`http://127.0.0.1:8000/api/seller-orders/${this.userId}`)
+            .get(`/api/seller-orders/${this.userId}`)
             .then((res) => {
                 console.log(res.data);
                 this.orders = res.data;
