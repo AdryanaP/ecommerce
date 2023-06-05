@@ -160,8 +160,7 @@ export default {
 
             axios
                 .put(`/api/product/${this.product.id}`, this.product)
-                .then((res) => {
-                    console.log(res);
+                .then(() => {
                     this.alertTitle = "Seu produto foi editado com sucesso!!";
                     this.alertShow = true;
                     setTimeout(() => {

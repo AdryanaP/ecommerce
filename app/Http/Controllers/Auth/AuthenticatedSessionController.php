@@ -47,7 +47,6 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         $seller = Seller::where('email', $request->email)->first();
-        info($seller);
         if (!empty($seller)) {
             if ($seller?->status != "aprovado") {
                 Toast::title('Opss!')
@@ -100,7 +99,6 @@ class AuthenticatedSessionController extends Controller
     public function logoutClient()
     {
         Auth::guard('client')->logout();
-        info("aa");
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

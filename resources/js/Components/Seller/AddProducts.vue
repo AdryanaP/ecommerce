@@ -209,7 +209,7 @@ export default {
         fileController() {
             this.alert.show = false;
             this.alert.message = "";
-            console.log(this.product.images);
+
             if (
                 this.product.images.length === 3 ||
                 this.$refs.file.files.length > 3
@@ -222,6 +222,7 @@ export default {
                 }
             }
         },
+
         formatImage(img) {
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -231,13 +232,11 @@ export default {
             this.product.images = JSON.parse(
                 JSON.stringify(this.product.images)
             );
-            console.log(this.product.images)
         },
+
         validateForm() {
             this.alert.show = false;
             this.alert.message = "";
-
-            console.log("bb")
 
             if (this.product.name.length < 1) {
                 this.alert.message = "Campo nome é obrigatório";
@@ -257,19 +256,16 @@ export default {
             }
 
             if (!this.alert.show) {
-                console.log("cc")
                 this.addProducts();
             }
         },
         addProducts() {
             this.product.slug = this.product.slug.replace(" ", "-").toLowerCase();
             this.product.images = JSON.stringify(this.product.images);
-            console.log("aa")
 
             axios
                 .post("/api/products", this.product)
                 .then((res) => {
-                    console.log(res);
                     this.alertTitle = "Seu produto foi postado com sucesso!!";
                     this.alertShow = true;
                     setTimeout(() => {
@@ -283,9 +279,6 @@ export default {
                     this.alert.show = true;
                 });
         },
-    },
-    created() {
-        console.log(this.sellerId);
     },
 };
 </script>

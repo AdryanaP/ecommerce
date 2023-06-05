@@ -213,7 +213,6 @@ export default {
             axios
                 .put(`/api/client/${this.client.id}`, this.client)
                 .then((res) => {
-                    console.log(res);
                     this.alertTitle =
                         "Seus dados foram atualizados com sucesso!!";
                     this.alertShow = true;
@@ -227,9 +226,6 @@ export default {
                     this.alert.show = true;
                 });
         },
-    },
-    created() {
-        console.log(this.client);
     },
 };
 </script>

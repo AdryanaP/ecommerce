@@ -20,7 +20,6 @@ class ProductSeeder extends Seeder
         $productQuery = Http::get('https://dummyjson.com/products')->json();
         $productData = collect($productQuery['products']);
         
-        info($productData);
         foreach ($productData as $product) {
             Product::create([
                 'seller_id' =>  $product['id'],
