@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="mx-auto max-w-6xl px-6 lg:px-4 py-12">
+    <div class="mx-auto md:max-w-6xl md:px-6 lg:px-4 md:py-12">
         <x-splade-lazy>
             <x-slot:placeholder>
                 <div class="col-span-full flex justify-center items-center h-64">

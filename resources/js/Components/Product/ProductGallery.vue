@@ -8,7 +8,7 @@
                 @click="changeImage(index)"
             >
                 <div
-                    class="h-32 p-0.5 flex items-center cursor-pointer pointer-events-none rounded-md"
+                    class="h-16 md:h-32 p-0.5 flex items-center cursor-pointer pointer-events-none rounded-md"
                     :class="{
                         'border-2 border-pink-500':
                             image === this.currentImage,
@@ -18,7 +18,7 @@
                     <img
                         :src="image"
                         alt="imagem produto"
-                        class="h-28 object-cover object-center"
+                        class="h-14 md:h-28 object-cover object-center"
                     />
                 </div>
             </div>

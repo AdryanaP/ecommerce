@@ -4,7 +4,7 @@
     </h1>
     <div
         v-if="wishlist.length"
-        class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[75%] m-auto my-8"
+        class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:max-w-[75%] m-auto my-8"
     >
         <div v-for="wish in wishlist" :key="wish.id">
             <ProductCard :product="wish.product" />

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="orders.length" class="flex flex-col gap-6 px-2 md:w-[60%] my-4">
+    <div v-if="orders.length" class="flex flex-col gap-6 md:px-2 md:w-[60%] my-4">
         <div
             v-for="(order, index) in orders"
             :key="index"
@@ -18,11 +18,11 @@
                         }}
                     </p>
                 </div>
-                <p class="m-0 text-xs text-end">ID: {{ order.uuid }}</p>
+                <p class="m-0 text-xs text-center md:text-end">ID: {{ order.uuid }}</p>
             </div>
             <div>
-                <div class="flex justify-between items-center mt-4">
-                    <div class="flex gap-4">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-0 justify-between items-center mt-4">
+                    <div class="flex items-center md:items-start gap-4">
                         <a :href="`/produto/${order.product.slug}`">
                             <img
                                 :src="order.product.images[0]"

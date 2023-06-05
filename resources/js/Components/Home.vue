@@ -1,7 +1,7 @@
 <template>
-    <div class="max-w-[75%] m-auto">
-        <div class="flex justify-between gap-4 mb-6">
-            <div class="flex gap-4">
+    <div class="md:max-w-[75%] m-auto">
+        <div class="md:flex justify-between gap-4 mb-6">
+            <div class="md:flex gap-4">
                 <div>
                     <label
                         for="location"
@@ -12,7 +12,7 @@
                         name="category"
                         v-model="category"
                         @change="filterdProduct"
-                        class="mt-2 md:w-[14rem] block rounded border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-pink-500 sm:text-sm sm:leading-6"
+                        class="mt-2 w-full md:w-[14rem] block rounded border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-pink-500 sm:text-sm sm:leading-6"
                     >
                         <option selected value="" disabled>Categorias</option>
                         <option
@@ -35,7 +35,7 @@
                         name="orderPrice"
                         v-model="orderPrice"
                         @change="filterdProduct"
-                        class="mt-2 block md:w-[14rem] rounded border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-pink-500 sm:text-sm sm:leading-6"
+                        class="mt-2 block w-full md:w-[14rem] rounded border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-pink-500 sm:text-sm sm:leading-6"
                     >
                         <option selected value="" disabled>Ordernar por</option>
                         <option value="ASC">Preço mais baixo</option>
@@ -44,10 +44,10 @@
                 </div>
             </div>
             <div>
-                <div class="flex items-center justify-center gap-2">
+                <div class="w-full flex items-center justify-center gap-2">
                     <label
                         for="search"
-                        class="block mt-2 text-sm font-medium leading-6 text-gray-900"
+                        class="hidden md:block mt-2 text-sm font-medium leading-6 text-gray-900"
                         >Pesquisar</label
                     >
                     <div class="mt-2">
@@ -56,7 +56,7 @@
                             name="search"
                             id="search"
                             v-model="search"
-                            class="block md:w-[14rem] rounded border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6"
+                            class="block w-full md:w-[14rem] rounded border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6"
                             placeholder="nome do produto"
                         />
                     </div>
@@ -142,3 +142,19 @@ export default {
     },
 };
 </script>
+
+<style escoped>
+select option:hover,
+select option:focus,
+select option:active {
+    background: linear-gradient(#000000, #000000);
+    background-color: #000000 !important; /* for IE */
+    color: #ffed00 !important;
+}
+
+select option:checked {
+    background: linear-gradient(#d6d6d6, #d6d6d6);
+    background-color: #d6d6d6 !important; /* for IE */
+    color: #000000 !important;
+}
+</style>

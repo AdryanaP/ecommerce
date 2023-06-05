@@ -1,7 +1,7 @@
 <template>
     <Disclosure as="nav" class="shadow" v-slot="{ open }">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex h-16 justify-between">
+            <div class="flex h-16 justify-between items-center">
                 <div class="flex">
                     <div class="-ml-2 mr-2 flex items-center md:hidden">
                         <!-- Mobile menu button -->
@@ -49,49 +49,30 @@
                             alt="Your Company"
                         />
                     </div>
-                    <div class="hidden md:ml-6 md:flex md:space-x-8">
-                        <a
-                            href="/"
-                            class="inline-flex items-center border-b-2 border-pink-500 px-1 pt-1 text-sm font-medium text-gray-900"
-                            >Home</a
+                    <div class="hidden md:ml-6 md:flex md:gap-4">
+                        <div
+                            v-for="(button, index) in navbar"
+                            :key="index"
+                            :class="[
+                                button.type === user || button.type === 'all' ? 'flex' : 'hidden',
+                                'items-end',
+                            ]"
                         >
-
-                        <a
-                            v-if="userSeller"
-                            href="/meus-produtos/"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Meus Produtos</a
-                        >
-                        <a
-                            v-if="userSeller"
-                            href="/adicionar-produto"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Adicionar Produto</a
-                        >
-                        <a
-                            v-if="userSeller"
-                            href="/minhas-vendas"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Produtos Vendidos</a
-                        >
-                        <a
-                            v-if="userClient"
-                            href="/minhas-compras"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Minhas Compras</a
-                        >
-                        <a
-                            v-if="userClient"
-                            href="/favoritos"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Meus Favoritos</a
-                        >
-                        <a
-                            v-if="userClient"
-                            href="/minha-conta"
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            >Minha Conta</a
-                        >
+                            <a
+                                v-if="
+                                    button.type === user ||
+                                    button.type === 'all'
+                                "
+                                :href="button.href"
+                                :class="[
+                                    windowHref === button.href
+                                        ? 'border-pink-500 hover:border-pink-600'
+                                        : 'border-transparent',
+                                    'inline-flex items-center border-b-2 px-1 pt-1 pb-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                                ]"
+                                >{{ button.name }}</a
+                            >
+                        </div>
                     </div>
                 </div>
                 <div
@@ -147,56 +128,20 @@
 
         <DisclosurePanel class="md:hidden">
             <div class="space-y-1 pb-3 pt-2">
-                <!-- Current: "bg-pink-50 border-pink-500 text-pink-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
-                <DisclosureButton
-                    as="a"
-                    href="/"
-                    class="block border-l-4 border-pink-500 bg-pink-50 py-2 pl-3 pr-4 text-base font-medium text-pink-700 sm:pl-5 sm:pr-6"
-                    >Home</DisclosureButton
-                >
-
-                <DisclosureButton
-                    v-if="userSeller"
-                    as="a"
-                    href="/adicionar-produto"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Adicionar Produto</DisclosureButton
-                >
-                <DisclosureButton
-                    v-if="userSeller"
-                    as="a"
-                    href="/meus-produtos/"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Meus Produto</DisclosureButton
-                >
-                <DisclosureButton
-                    v-if="userSeller"
-                    as="a"
-                    href="/minhas-vendas"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Produtos Vendidos</DisclosureButton
-                >
-                <DisclosureButton
-                    v-if="userClient"
-                    as="a"
-                    href="/minhas-compras"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Minhas Compras</DisclosureButton
-                >
-                <DisclosureButton
-                    v-if="userClient"
-                    as="a"
-                    href="/favoritos"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Meus Favoritos</DisclosureButton
-                >
-                <DisclosureButton
-                    v-if="userClient"
-                    as="a"
-                    href="/minha-conta"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6"
-                    >Minha conta</DisclosureButton
-                >
+                <div v-for="(button, index) in navbar" :key="index">
+                    <DisclosureButton
+                        v-if="button.type === user || button.type === 'all'"
+                        as="a"
+                        :href="button.href"
+                        :class="[
+                            windowHref === button.href
+                                ? 'border-pink-500  bg-pink-50 text-pink-700'
+                                : 'border-transparent text-gray-500 bg-transparent',
+                            'block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 sm:pl-5 sm:pr-6',
+                        ]"
+                        >{{ button.name }}</DisclosureButton
+                    >
+                </div>
             </div>
             <div
                 class="border-t border-gray-200 pb-3 pt-4 px-2"
@@ -219,7 +164,7 @@
             </div>
         </DisclosurePanel>
     </Disclosure>
-    <Banner v-if="userClient && user.email_verified_at === null"/>
+    <Banner v-if="userClient && user.email_verified_at === null" />
 </template>
 
 <script>
@@ -261,8 +206,57 @@ export default {
         Banner,
     },
 
+    data() {
+        return {
+            user: "",
+            windowHref: "",
+            navbar: [
+                {
+                    name: "Home",
+                    href: "/",
+                    type: "all",
+                },
+                {
+                    name: "Minhas Compras",
+                    href: "/minhas-compras",
+                    type: "client",
+                },
+                {
+                    name: "Meus Favoritos",
+                    href: "/favoritos",
+                    type: "client",
+                },
+                {
+                    name: "Minha Conta",
+                    href: "/minha-conta",
+                    type: "client",
+                },
+                {
+                    name: "Meus Produtos",
+                    href: "/meus-produtos",
+                    type: "seller",
+                },
+                {
+                    name: "Adicionar Produto",
+                    href: "/adicionar-produto",
+                    type: "seller",
+                },
+                {
+                    name: "Produtos Vendidos",
+                    href: "/minhas-vendas",
+                    type: "seller",
+                },
+            ],
+        };
+    },
+
     created() {
-        console.log(window.location.pathname)
+        if (this.userClient) {
+            this.user = "client";
+        } else if (this.userSeller) {
+            this.user = "seller";
+        }
+        this.windowHref = window.location.pathname;
     },
 };
 </script>

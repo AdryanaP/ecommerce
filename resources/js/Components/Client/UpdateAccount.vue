@@ -1,7 +1,7 @@
 <template>
-    <div class="md:w-[40%] m-auto p-4">
+    <div class="w-full md:w-[40%] m-auto md:p-4">
         <hr />
-        <div class="flex flex-col gap-2 p-4">
+        <div class="flex flex-col gap-2 my-4 md:mx-4">
             <div>
                 <label
                     for="name"
