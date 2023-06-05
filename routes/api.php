@@ -1,17 +1,10 @@
 <?php
 
-use App\Http\Controllers\Actions\SearchController;
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\FreteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\ProductController ;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 

@@ -10,8 +10,6 @@ import VueTheMask from "vue-the-mask";
 import PasswordInput from "./Components/Forms/PasswordInput.vue";
 import PasswordConfirmationInput from "./Components/Forms/PasswordConfirmationInput.vue";
 
-import ReviewModal from "./Components/ReviewModal.vue";
-
 import AddProducts from "./Components/Seller/AddProducts.vue";
 import MyProducts from "./Components/Seller/MyProducts.vue";
 import UpdateProductCard from "./Components/Seller/UpdateProductCard.vue";
@@ -32,7 +30,6 @@ import Modal from "./Components/Modal.vue";
 
 import ProductCard from "./Components/ProductCard.vue";
 
-import ProductReviews from "./Components/Product/ProductReviews.vue";
 import ProductGallery from "./Components/Product/ProductGallery.vue";
 import ProductActionButtons from "./Components/Product/ProductActionButtons.vue";
 import WishlistToggle from "./Components/Product/WishlistToggle.vue";
@@ -59,8 +56,6 @@ createApp({
             ProductActionButtons,
             WishlistToggle,
             MyOrders,
-            ReviewModal,
-            ProductReviews,
             Alert,
             Navbar,
             Home,

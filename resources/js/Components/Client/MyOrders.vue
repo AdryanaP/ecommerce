@@ -81,11 +81,9 @@ export default {
     },
 
     created() {
-        console.log(this.userId);
         axios
             .get(`/api/client-orders/${this.userId}`)
             .then((res) => {
-                console.log(res.data);
                 this.orders = res.data;
 
                 this.orders.forEach((order) => {
@@ -94,7 +92,6 @@ export default {
                         order.product.price
                     ).toFixed(2);
                 });
-                console.log(this.orders);
             })
             .catch((error) => {});
     },

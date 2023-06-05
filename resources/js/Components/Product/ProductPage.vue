@@ -66,27 +66,18 @@
             <hr class="my-8" />
         </div>
     </div>
-
-    <!-- <div>
-        <ProductFolders :product="product" />
-    </div>
-    <div>
-        <ProductReviews :productId="product.id" />
-    </div> -->
 </template>
 
 <script>
 import ProductGallery from "./ProductGallery.vue";
 import ProductActionButtons from "./ProductActionButtons.vue";
 import WishlistToggle from "./WishlistToggle.vue";
-import ProductReviews from "./ProductReviews.vue";
 
 export default {
     components: {
         ProductGallery,
         ProductActionButtons,
         WishlistToggle,
-        ProductReviews,
     },
 
     props: {

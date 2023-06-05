@@ -89,59 +89,6 @@
                 </div>
             </div>
 
-            <div class="col-span-full">
-                <label
-                    for="cover-photo"
-                    class="block text-sm font-medium leading-6 text-gray-900"
-                    >Imagens do produto</label
-                >
-                <div
-                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
-                >
-                    <div class="text-center">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 48 48"
-                            id="image-files"
-                            class="mx-auto h-10 w-10 text-pink-500"
-                            bg-pink-100
-                        >
-                            <path
-                                d="M19 18.5a3.5 3.5 0 1 0-3.5 3.5 3.5 3.5 0 0 0 3.5-3.5Zm-5 0a1.5 1.5 0 1 1 1.5 1.5 1.5 1.5 0 0 1-1.5-1.5Zm26.12-2.79L29.29 4.88A3 3 0 0 0 27.17 4H10a3 3 0 0 0-3 3v5a1 1 0 0 0 2 0V7a1 1 0 0 1 1-1h17v9a3 3 0 0 0 3 3h9v15.37l-4.84-5.45a3 3 0 0 0-4.37-.13l-3.69 3.69-4.94-5.56a3 3 0 0 0-4.37-.13L9 33.59V16a1 1 0 0 0-2 0v25a3 3 0 0 0 3 3h28a3 3 0 0 0 3-3V17.83a3 3 0 0 0-.88-2.12ZM30 16a1 1 0 0 1-1-1V7.41L37.59 16ZM9 41v-4.59l9.21-9.2a.88.88 0 0 1 .73-.29.94.94 0 0 1 .72.33L32.77 42H10a1 1 0 0 1-1-1Zm29 1h-2.55l-8-9 3.78-3.77a.85.85 0 0 1 .73-.29.94.94 0 0 1 .72.33L39 36.38V41a1 1 0 0 1-1 1Z"
-                                data-name="26 Image Files"
-                            ></path>
-                        </svg>
-
-                        <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                            <label
-                                for="file-upload"
-                                class="relative cursor-pointer rounded-md bg-white font-semibold text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2 hover:text-pink-500"
-                            >
-                                <span>Upload os arquivos</span>
-                                <input
-                                    id="file-upload"
-                                    name="file-upload"
-                                    type="file"
-                                    class="sr-only"
-                                    accept="image/*"
-                                    multiple
-                                    tabindex="-1"
-                                    ref="file"
-                                    @change="fileController"
-                                />
-                            </label>
-                            <p class="pl-1">ou arraste até aqui</p>
-                        </div>
-                        <p class="text-xs leading-5 text-gray-600">
-                            PNG, JPG, GIF até 10MB
-                        </p>
-                        <p class="text-xs leading-5 text-gray-600">
-                            max: 3 imagens
-                        </p>
-                    </div>
-                </div>
-            </div>
-
             <div class="my-4">
                 <div v-if="alert.show" class="p-2 mb-4 bg-red-200 rounded">
                     <p class="text-red-600 text-sm">❗️ {{ alert.message }}</p>
@@ -184,33 +131,6 @@ export default {
         };
     },
     methods: {
-        fileController() {
-            this.alert.show = false;
-            this.alert.message = "";
-            console.log(this.product.images);
-            if (
-                this.product.images.length === 3 ||
-                this.$refs.file.files.length > 3
-            ) {
-                this.alert.show = true;
-                this.alert.message = "Máximo de 3 imagens";
-            } else {
-                for (let img of this.$refs.file.files) {
-                    this.qtd++;
-                    this.formatImage(img);
-                }
-            }
-        },
-        formatImage(img) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                this.product.images.push(e.target.result);
-            };
-            reader.readAsDataURL(img);
-            this.product.images = JSON.parse(
-                JSON.stringify(this.product.images)
-            );
-        },
         validateForm() {
             this.alert.show = false;
             this.alert.message = "";
@@ -227,10 +147,7 @@ export default {
             } else if (this.product.price.length === 0) {
                 this.alert.message = "Campo preço é obrigatório";
                 this.alert.show = true;
-            } else if (this.product.images.length === 0) {
-                this.alert.message = "Envie uma imagem";
-                this.alert.show = true;
-            }
+            } 
 
             if (!this.alert.show) {
                 this.addProducts();
@@ -240,21 +157,16 @@ export default {
             this.product.slug = this.product.slug
                 .replace(" ", "-")
                 .toLowerCase();
-            this.product.images = JSON.stringify(this.product.images);
 
             axios
-                .put(
-                    `/api/product/${this.product.id}`,
-                    this.product
-                )
+                .put(`/api/product/${this.product.id}`, this.product)
                 .then((res) => {
                     console.log(res);
                     this.alertTitle = "Seu produto foi editado com sucesso!!";
                     this.alertShow = true;
                     setTimeout(() => {
                         this.alertShow = false;
-                        window.location.href =
-                            "/meus-produtos";
+                        window.location.href = "/meus-produtos";
                     }, 3000);
                 })
                 .catch((error) => {
@@ -264,8 +176,6 @@ export default {
         },
     },
     created() {
-        console.log(this.product);
-        this.product.images = JSON.parse(this.product.images);
         this.product.price = parseFloat(this.product.price).toFixed(2);
     },
 };

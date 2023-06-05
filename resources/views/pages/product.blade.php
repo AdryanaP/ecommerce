@@ -13,7 +13,7 @@
             <h2 class="uppercase font-medium">
                 <Link href="{{ route('welcome') }}" class="hover:text-pink-500">Início</Link>
                 /
-                <Link href="/" class="hover:text-pink-500">{{ $product->category }}</Link>
+                <span>{{ $product->category }}</span>
                 /
                 <span class="text-pink-500">{{ $product->name }}</span>
             </h2>

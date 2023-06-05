@@ -54,13 +54,13 @@
                             v-for="(button, index) in navbar"
                             :key="index"
                             :class="[
-                                button.type === user || button.type === 'all' ? 'flex' : 'hidden',
+                                button.type === userType || button.type === 'all' ? 'flex' : 'hidden',
                                 'items-end',
                             ]"
                         >
                             <a
                                 v-if="
-                                    button.type === user ||
+                                    button.type === userType ||
                                     button.type === 'all'
                                 "
                                 :href="button.href"
@@ -130,7 +130,7 @@
             <div class="space-y-1 pb-3 pt-2">
                 <div v-for="(button, index) in navbar" :key="index">
                     <DisclosureButton
-                        v-if="button.type === user || button.type === 'all'"
+                        v-if="button.type === userType || button.type === 'all'"
                         as="a"
                         :href="button.href"
                         :class="[
@@ -208,7 +208,7 @@ export default {
 
     data() {
         return {
-            user: "",
+            userType: "",
             windowHref: "",
             navbar: [
                 {
@@ -252,9 +252,9 @@ export default {
 
     created() {
         if (this.userClient) {
-            this.user = "client";
+            this.userType = "client";
         } else if (this.userSeller) {
-            this.user = "seller";
+            this.userType = "seller";
         }
         this.windowHref = window.location.pathname;
     },

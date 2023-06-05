@@ -131,8 +131,6 @@ export default {
     },
 
     created() {
-        // console.log(this.products);
-        // this.totalProducts = this.products.data;
         this.filterdProduct();
         axios.get("/api/categories").then((res) => {
             this.categories = [
