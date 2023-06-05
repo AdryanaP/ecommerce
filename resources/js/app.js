@@ -25,6 +25,7 @@ import MyOrders from "./Components/Client/MyOrders.vue";
 
 import Home from "./Components/Home.vue";
 import Navbar from "./Components/Navbar.vue";
+import Banner from "./Components/Banner.vue";
 
 import Alert from "./Components/Alert.vue";
 import Modal from "./Components/Modal.vue";
@@ -72,7 +73,8 @@ createApp({
             UpdateProduct,
             UpdateAccount,
             Modal,
-            MySales
+            MySales,
+            Banner
         },
     })
     .use(VueTheMask)

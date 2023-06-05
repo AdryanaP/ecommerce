@@ -1,7 +1,7 @@
 <div>
     <!-- Page Heading -->
     <header>
-        <Navbar :userId="@js(auth()->guest())" :userClient="{{ json_encode(Auth::guard('client')->check()) }}" :userSeller="{{ json_encode(Auth::guard('seller')->check()) }}"/>
+        <Navbar :user="@js(auth()->user())" :userClient="{{ json_encode(Auth::guard('client')->check()) }}" :userSeller="{{ json_encode(Auth::guard('seller')->check()) }}"/>
     </header>
 
     <!-- Page Content -->

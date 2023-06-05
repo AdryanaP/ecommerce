@@ -219,6 +219,7 @@
             </div>
         </DisclosurePanel>
     </Disclosure>
+    <Banner v-if="userClient && user.email_verified_at === null"/>
 </template>
 
 <script>
@@ -231,6 +232,7 @@ import {
     MenuItem,
     MenuItems,
 } from "@headlessui/vue";
+import Banner from "./Banner.vue";
 
 export default {
     name: "Navbar",
@@ -243,6 +245,10 @@ export default {
             type: Boolean,
             required: true,
         },
+        user: {
+            type: Object,
+            required: true,
+        },
     },
     components: {
         Disclosure,
@@ -252,8 +258,11 @@ export default {
         MenuButton,
         MenuItem,
         MenuItems,
+        Banner,
     },
 
-    created() {},
+    created() {
+        console.log(window.location.pathname)
+    },
 };
 </script>

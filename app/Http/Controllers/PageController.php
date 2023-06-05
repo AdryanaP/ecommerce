@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Filament\Resources\OrderResource;
-use App\Http\Resources\OrderCollection;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\SellerResource;
-use App\Http\Resources\WishlistCollection;
-use App\Http\Resources\WishlistResource;
-use App\Models\Category;
 use App\Models\Client;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\Seller;
-use App\Models\User;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
@@ -22,13 +15,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
-use ProtoneMedia\Splade\Facades\Splade;
 use ProtoneMedia\Splade\Facades\Toast;
-use ProtoneMedia\Splade\SpladeTable;
-use Spatie\QueryBuilder\QueryBuilder;
+
 
 class PageController extends Controller
 {
@@ -44,6 +32,7 @@ class PageController extends Controller
     {
         $client = Client::findOrfail($id)->first();
         $client->credits = 1000;
+        $client->email_verified_at = Carbon::now();
 
         if($client->save()) {
             return view('pages.client.confirmeEmail');
@@ -117,34 +106,4 @@ class PageController extends Controller
 
         return redirect()->back();
     }
-
-    // public function checkout(Request $request)
-    // {
-    //     $cartItems = \Cart::getContent();
-    //     $amount = [
-    //         'subtotal' => str_replace(',', '', \Cart::getSubTotal()) / 100,
-    //         'total' => (str_replace(',', '', \Cart::getSubTotal()) / 100) + $request->input('shipping_shipping_price')
-    //     ];
-    //     $userSimple = User::where('id', Auth::id())->first();
-    //     // $user = new UserResource($userSimple);
-
-
-    //     return view('pages.checkout', compact('cartItems', 'amount', 'userSimple'));
-    // }
-
-    // public function thankyou(Order $orderId)
-    // {
-    //     info($orderId);
-    //     $order = Order::findOrFail($orderId);
-    //     info($order);
-    //     return view('pages.checkout.success', compact('order'));
-    // }
-
-    // public function success($orderId)
-    // {
-    //     info($orderId);
-    //     $order = Order::findOrFail($orderId);
-    //     info($order);
-    //     return view('pages.success', compact('order'));
-    // }
 }

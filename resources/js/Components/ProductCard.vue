@@ -31,7 +31,9 @@ export default {
     },
 
     created() {
-        // this.product.images = JSON.parse(this.product.images)
+        if(window.location.pathname === "/favoritos") {
+            this.product.images = JSON.parse(this.product.images)
+        }
     },
 };
 </script>
