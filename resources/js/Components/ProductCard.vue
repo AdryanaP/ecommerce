@@ -1,7 +1,7 @@
 <template>
     <a
         :href="`produto/${product.slug}`"
-        class="flex flex-col justify-between gap-3 border border-pink-500 rounded"
+        class="flex flex-col justify-between h-full gap-3 border border-pink-500 rounded"
     >
         <img
             :src="product.images[0]"
@@ -25,13 +25,13 @@ export default {
     name: "ProductCard",
     props: {
         product: {
-            typeof: Object,
+            type: Object,
             required: false,
         },
     },
 
     created() {
-        this.product.images = JSON.parse(this.product.images);
+        // this.product.images = JSON.parse(this.product.images)
     },
 };
 </script>

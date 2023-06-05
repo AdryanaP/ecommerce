@@ -8,6 +8,8 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource as ResourcesProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ProductController extends Controller
 {
@@ -16,11 +18,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($orderBy)
     {
-        $products = Product::all();
+        $products = QueryBuilder::for(Product::class)
+            ->allowedFilters([
+                AllowedFilter::partial('name')->ignore([null, "", " "]), 
+                AllowedFilter::partial('category')->ignore([null, "", " "]),
+                ])
+            ->orderBy('price', $orderBy)->get();
 
-        return new ProductResource($products);
+        return new ProductCollection($products);
+    }
+
+    public function category()
+    {
+        $categories = Product::select('category')->get();
+
+        return $categories;
     }
 
     /**

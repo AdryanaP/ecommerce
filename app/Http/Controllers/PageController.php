@@ -84,48 +84,6 @@ class PageController extends Controller
         return view('pages.seller.mysales');
     }
 
-    // public function mypersonaldataUpdate(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class . ',email,' . auth()->user()->id],
-    //         'document' => ['required', 'string', 'max:14', 'unique:' . User::class . ',document,' . auth()->user()->id, 'cpf'],
-    //         'cellphone' => ['required', 'string', 'max:16', 'unique:' . User::class . ',cellphone,' . auth()->user()->id],
-    //         'genre' => ['required', 'string', 'max:1', 'in:f,m'],
-    //         'birthdate' => ['required', 'date_format:d/m/Y'],
-    //         'newsletter' => ['nullable'],
-    //     ]);
-
-    //     $request->user()->update([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'document' => $request->document,
-    //         'genre' => $request->genre,
-    //         'newsletter' => $request->newsletter,
-    //         'cellphone' => $request->cellphone,
-    //         'birthdate' => Carbon::createFromFormat('d/m/Y', $request->birthdate),
-    //     ]);
-
-    //     Toast::title('Dados atualizado!')
-    //         ->backdrop()
-    //         ->autoDismiss(1);
-
-    //     return redirect()->back();
-    // }
-
-
-    // public function myorders()
-    // {
-    //     $orders = new OrderResource(
-    //         Order::query()
-    //             ->where('client_id', Auth::id())
-    //             ->latest()
-    //             ->get()
-    //     );
-
-    //     return view('pages.myorders', compact('orders'));
-    // }
-
 
     public function wishlist()
     {

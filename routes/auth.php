@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredSellerController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -25,6 +26,8 @@ Route::middleware('guest')->group(function () {
     Route::get('resetar-senha/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
     Route::post('resetar-senha', [NewPasswordController::class, 'store'])->name('password.store');
 });
+
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');

@@ -30,10 +30,13 @@ Route::post('/wishlist/check', [WishlistController::class, 'check']);
 Route::post('/wishlist/toggle', [WishlistController::class, 'toggle']);
 
 // Produtos
-Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products/{orderBy}', [ProductController::class, 'index']);
+Route::get('/my-products/{id}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+
+Route::get('/categories', [ProductController::class, 'category']);
 
 // Cliente
 Route::put('/client/{id}', [ClientController::class, 'update']);

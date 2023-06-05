@@ -7,6 +7,11 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class ProductCollection extends ResourceCollection
 {
     /**
+     * @var string
+     */
+    public $collects = ProductResource::class;
+
+    /**
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request

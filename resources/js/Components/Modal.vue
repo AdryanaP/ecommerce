@@ -134,7 +134,7 @@ export default {
         open: {
             type: Boolean,
             required: true,
-        }
+        },
     },
 };
 </script>

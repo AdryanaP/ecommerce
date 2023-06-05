@@ -25,6 +25,7 @@ import UpdateAccount from "./Components/Client/UpdateAccount.vue";
 import MyOrders from "./Components/Client/MyOrders.vue";
 
 
+import Home from "./Components/Home.vue";
 import Navbar from "./Components/Navbar.vue";
 
 import Alert from "./Components/Alert.vue";
@@ -70,6 +71,7 @@ createApp({
             Wishlist,
             Payment,
             Navbar,
+            Home,
             AddProducts,
             ProductCard,
             ProductPage,

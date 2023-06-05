@@ -145,20 +145,6 @@
                 </div>
             </div>
 
-            <div v-if="product.images.length" class="flex gap-2 justify-around">
-                <div v-for="img in product.images" :key="img">
-                    <div
-                        class="border border-dashed border-pink-500 p-2 rounded"
-                    >
-                        <img
-                            :src="img"
-                            alt="imagem produto"
-                            class="w-24 border-pink-500"
-                        />
-                    </div>
-                </div>
-            </div>
-
             <div class="my-4">
                 <div v-if="alert.show" class="p-2 mb-4 bg-red-200 rounded">
                     <p class="text-red-600 text-sm">❗️ {{ alert.message }}</p>
